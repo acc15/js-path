@@ -1,0 +1,27 @@
+{
+  "name": "objpath",
+  "version": "1.0.0",
+  "description": "get/set json values by paths",
+  "main": "ObjPath.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/acc15/objpath.git"
+  },
+  "keywords": [
+    "path",
+    "get",
+    "set"
+  ],
+  "author": "vm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acc15/objpath/issues"
+  },
+  "homepage": "https://github.com/acc15/objpath#readme",
+  "devDependencies": {
+    "typescript": "^2.3.3"
+  }
+}
