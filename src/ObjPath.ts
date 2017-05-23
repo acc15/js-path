@@ -1,7 +1,7 @@
 
-type PathPart = string | number;
+export type PathPart = string | number;
 
-export class ObjPath {
+export default class ObjPath {
 
     private parts: PathPart[];
 

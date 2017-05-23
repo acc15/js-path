@@ -2,14 +2,13 @@
   "name": "objpath",
   "version": "1.0.0",
   "description": "get/set json values by paths",
-  "main": "ObjPath.ts",
+  "main": "./lib/ObjPath.js",
+  "types": "./lib/ObjPath.d.ts",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "test": "tsc -P ./spec/tsconfig.spec.json && jasmine"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/acc15/objpath.git"
-  },
+  "repository": "github:acc15/objpath",
   "keywords": [
     "path",
     "get",
@@ -22,6 +21,9 @@
   },
   "homepage": "https://github.com/acc15/objpath#readme",
   "devDependencies": {
+    "@types/jasmine": "^2.5.47",
+    "jasmine": "^2.6.0",
+    "jasmine-spec-reporter": "^4.1.0",
     "typescript": "^2.3.3"
   }
 }
