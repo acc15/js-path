@@ -1,13 +1,9 @@
 import "jasmine";
 import ObjPath from './ObjPath';
 
-describe("A suite is just a function", () => {
-  it("and so is a spec", () => {
-    const p = new ObjPath(["a"]);
-    expect(1).toBe(1);
-  });
-  it("second", () => {
-      expect(true).toBe(false);
-  });
+describe("ObjPath", () => {
+    it("must keep path parts", () => {
+        const parts =  ["a", 1, -1, "b", ""];
+        expect(new ObjPath(parts).parts).toBe(parts);
+    });
 });
-    
