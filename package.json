@@ -6,7 +6,7 @@
   "types": "./lib/ObjPath.d.ts",
   "scripts": {
     "tsc": "tsc",
-    "test": "tsc -P ./spec/tsconfig.json && jasmine"
+    "test": "mocha --compilers ts:ts-node/register src/**/*.spec.ts"
   },
   "repository": "github:acc15/objpath",
   "keywords": [
@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/acc15/objpath#readme",
   "devDependencies": {
-    "@types/jasmine": "^2.5.47",
-    "jasmine": "^2.6.0",
-    "jasmine-spec-reporter": "^4.1.0",
+    "@types/chai": "^3.5.2",
+    "@types/mocha": "^2.2.41",
+    "chai": "^3.5.0",
+    "mocha": "^3.4.2",
+    "ts-node": "^3.0.4",
     "typescript": "^2.3.3"
   }
 }
