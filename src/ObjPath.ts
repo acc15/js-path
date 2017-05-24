@@ -19,6 +19,31 @@ export default class ObjPath {
         return obj;
     }
 
+    set(obj: any, val: any): any {
+        if (this.parts.length === 0) {
+            return val;
+        }
+
+        if (obj === null || obj === undefined) {
+            obj = typeof this.parts[0] === "number" ? [] : {};
+        }
+
+        const root = obj;
+        for (let i = 0; i < this.parts.length - 1; i++) {
+            const part = this.parts[i];
+            if (obj[part] === null || obj[part] === undefined) {
+                obj[part] = typeof this.parts[i + 1] === "number" ? [] : {};
+            }
+            obj = obj[part];
+        }
+        obj[this.parts[this.parts.length - 1]] = val;
+        return root;
+    }
+
+    static empty(): ObjPath {
+        return new ObjPath([]);
+    }
+
     static parse(path: string): ObjPath {
 
         const parts: PathPart[] = [];
