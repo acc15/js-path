@@ -57,7 +57,19 @@ describe("ObjPath", () => {
             const result = new ObjPath(["b", "c"]).apply(obj, "changed");
             expect(result.a).eq(obj.a);
             expect(obj.b.c).eq("subject to change");
+            expect(result.b).not.eq(obj.b);
             expect(result.b.c).eq("changed");
+
+        });
+
+        it("must create additional objects if missing in source tree", () => {
+
+            const obj = { a: {b: {c: 115}}};
+
+            const expectedVal = 3.1415;
+            const result = new ObjPath(["x", "y", "z"]).apply(obj, expectedVal);
+            expect(result.a).eq(obj.a);
+            expect(result.x.y.z).eq(expectedVal);
 
         });
 

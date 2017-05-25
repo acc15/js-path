@@ -45,17 +45,16 @@ export default class ObjPath {
             return val;
         }
 
-        const root = ObjPath.shallowCopyForPart(obj, this.parts[0]);
+        const root: any = ObjPath.shallowCopyForPart(obj, this.parts[0]);
 
-        // TODO implement
-        // for (let i = 0; i < this.parts.length - 1; i++) {
-        //     const part = this.parts[i];
-        //     if (obj[part] === null || obj[part] === undefined) {
-        //         obj[part] = ObjPath.createByPart(this.parts[i + 1]);
-        //     }
-        //     obj = obj[part];
-        // }
+        let copy = root;
+        for (let i = 0; i < this.parts.length - 1; i++) {
+            const part = this.parts[i];
+            obj = (obj !== null && obj !== undefined) ? obj[part] : obj;
+            copy = copy[part] = ObjPath.shallowCopyForPart(obj, part);
+        }
 
+        copy[this.parts[this.parts.length - 1]] = val;
         return root;
     }
 
@@ -97,7 +96,7 @@ export default class ObjPath {
 
         const result: any = {};
         for (const prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
+            if (obj.hasOwnProperty(prop) && prop !== part) {
                 result[prop] = obj[prop];
             }
         }
