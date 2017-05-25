@@ -35,10 +35,31 @@ describe("ObjPath", () => {
         });
 
         it("must return value if path is empty", () => {
-            let expected = {};
+            const expected = {};
             expect(ObjPath.empty().set(null, expected)).eq(expected);
         });
+    });
 
+    describe("apply()", () => {
+
+        it("must return value if path is empty", () => {
+            const expected = {};
+            expect(ObjPath.empty().apply(null, expected)).eq(expected);
+        });
+
+        it("must return new object with shallow copies of other fields", () => {
+
+            const obj = {
+                a: {b: 1},
+                b: {c: "subject to change"}
+            };
+
+            const result = new ObjPath(["b", "c"]).apply(obj, "changed");
+            expect(result.a).eq(obj.a);
+            expect(obj.b.c).eq("subject to change");
+            expect(result.b.c).eq("changed");
+
+        });
 
     });
 
