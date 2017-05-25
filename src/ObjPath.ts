@@ -1,6 +1,8 @@
 
 export type PathPart = string | number;
 
+export type AnyPath = string | PathPart[] | ObjPath;
+
 export default class ObjPath {
 
     parts: PathPart[];
@@ -56,6 +58,15 @@ export default class ObjPath {
 
         copy[this.parts[this.parts.length - 1]] = val;
         return root;
+    }
+
+    empty(): boolean {
+        return this.parts.length === 0;
+    }
+
+    concat(p: AnyPath): ObjPath {
+        // TODO implement...
+        return ObjPath.empty();
     }
 
     static empty(): ObjPath {
