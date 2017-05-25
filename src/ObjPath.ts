@@ -86,10 +86,20 @@ export default class ObjPath {
         return new ObjPath(parts);
     }
 
-    static shallowCopyForPart(obj: any, part: PathPart) {
-        const result: any = ObjPath.createByPart(part);
-        if (obj) {
-            Object.keys(obj).forEach(k => result[k] = obj[k]);
+    static shallowCopyForPart(obj: any, part: PathPart): any[] | object {
+        if (!obj) {
+            return ObjPath.createByPart(part);
+        }
+
+        if (Array.isArray(obj)) {
+            return obj.slice();
+        }
+
+        const result: any = {};
+        for (const prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                result[prop] = obj[prop];
+            }
         }
         return result;
     }
