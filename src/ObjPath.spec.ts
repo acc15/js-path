@@ -103,27 +103,20 @@ describe("ObjPath", () => {
     });
 
     describe("concat()", () => {
+        it("string", () => expect(new ObjPath(["a", "b"]).concat("c.d.e").parts).eql(["a", "b", "c", "d", "e"]));
+        it("number", () => expect(new ObjPath(["a", "b"]).concat(1).parts).eql(["a", "b", 1]));
+        it("ObjPath", () => expect(new ObjPath(["a", "b"]).concat(new ObjPath([1, 2])).parts).eql(["a", "b", 1, 2]));
+        it("parts", () => expect(new ObjPath(["a", "b"]).concat(["c", 1]).parts).eql(["a", "b", "c", 1]));
+    });
 
-        it("string", () => {
-            const p = new ObjPath(["a", "b"]).concat("c.d.e");
-            expect(p.parts).eql(["a", "b", "c", "d", "e"]);
-        });
-
+    describe("of()", () => {
+        it("string", () => expect(ObjPath.of("a.b.c").parts).eql(["a", "b", "c"]));
+        it("number", () => expect(ObjPath.of(1).parts).eql([1]));
         it("ObjPath", () => {
-            const p = new ObjPath(["a", "b"]).concat(new ObjPath([1, 2]));
-            expect(p.parts).eql(["a", "b", 1, 2]);
+            let p = ObjPath.parse("a");
+            expect(ObjPath.of(p)).eq(p);
         });
-
-        it("number part", () => {
-            const p = new ObjPath(["a", "b"]).concat(1);
-            expect(p.parts).eql(["a", "b", 1]);
-        });
-
-        it("parts", () => {
-            const p = new ObjPath(["a", "b"]).concat(["c", 1]);
-            expect(p.parts).eql(["a", "b", "c", 1]);
-        })
-
+        it("parts", () => expect(ObjPath.of([1,2,3]).parts).eql([1,2,3]));
     });
 
 });

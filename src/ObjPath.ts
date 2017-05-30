@@ -78,6 +78,18 @@ export default class ObjPath {
         return new ObjPath([]);
     }
 
+    static of(p: AnyPath): ObjPath {
+        if (p instanceof ObjPath) {
+            return p;
+        } else if (Array.isArray(p)) {
+            return new ObjPath(p);
+        } else if (typeof p === "string") {
+            return ObjPath.parse(p);
+        } else {
+            return new ObjPath([p]);
+        }
+    }
+
     static parse(path: string): ObjPath {
 
         const parts: PathPart[] = [];
