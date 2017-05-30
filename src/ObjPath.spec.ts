@@ -1,17 +1,17 @@
 import "mocha";
-import { expect } from "chai";
+import {expect} from "chai";
 import ObjPath from './ObjPath';
 
 describe("ObjPath", () => {
     it("ctor must store parts", () => {
-        const parts =  ["a", 1, -1, "b", ""];
+        const parts = ["a", 1, -1, "b", ""];
         expect(new ObjPath(parts).parts).eq(parts);
     });
 
     describe("get()", () => {
 
         it("must return value by path", () => {
-            expect(new ObjPath(["a", "b", 1]).get({ a: { b: [null, "test!"] } })).eq("test!");
+            expect(new ObjPath(["a", "b", 1]).get({a: {b: [null, "test!"]}})).eq("test!");
         });
 
         it("must return obj when path is empty", () => {
@@ -23,12 +23,12 @@ describe("ObjPath", () => {
     describe("set()", () => {
 
         it("must create all objects", () => {
-            expect(new ObjPath(["a", "b", 1, 2, "login"]).set(null, 5)).eql({a: {b: [,[,,{login:5}]]}});
+            expect(new ObjPath(["a", "b", 1, 2, "login"]).set(null, 5)).eql({a: {b: [, [, , {login: 5}]]}});
         });
 
         it("must change field in existing object", () => {
 
-            const v = [{a: [,5]}];
+            const v = [{a: [, 5]}];
 
             new ObjPath([0, "a", 1]).set(v, 200);
             expect(v[0].a[1]).eq(200);
@@ -64,7 +64,7 @@ describe("ObjPath", () => {
 
         it("must create additional objects if missing in source tree", () => {
 
-            const obj = { a: {b: {c: 115}}};
+            const obj = {a: {b: {c: 115}}};
 
             const expectedVal = 3.1415;
             const result = new ObjPath(["x", "y", "z"]).apply(obj, expectedVal);
@@ -99,6 +99,30 @@ describe("ObjPath", () => {
         it("must throw for non-integer indexes", () => {
             expect(() => ObjPath.parse("[3.1415]")).throw();
         });
+
+    });
+
+    describe("concat()", () => {
+
+        it("string", () => {
+            const p = new ObjPath(["a", "b"]).concat("c.d.e");
+            expect(p.parts).eql(["a", "b", "c", "d", "e"]);
+        });
+
+        it("ObjPath", () => {
+            const p = new ObjPath(["a", "b"]).concat(new ObjPath([1, 2]));
+            expect(p.parts).eql(["a", "b", 1, 2]);
+        });
+
+        it("number part", () => {
+            const p = new ObjPath(["a", "b"]).concat(1);
+            expect(p.parts).eql(["a", "b", 1]);
+        });
+
+        it("parts", () => {
+            const p = new ObjPath(["a", "b"]).concat(["c", 1]);
+            expect(p.parts).eql(["a", "b", "c", 1]);
+        })
 
     });
 

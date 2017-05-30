@@ -1,7 +1,7 @@
 
 export type PathPart = string | number;
 
-export type AnyPath = string | PathPart[] | ObjPath;
+export type AnyPath = PathPart | PathPart[] | ObjPath;
 
 export default class ObjPath {
 
@@ -65,8 +65,13 @@ export default class ObjPath {
     }
 
     concat(p: AnyPath): ObjPath {
-        // TODO implement...
-        return ObjPath.empty();
+        if (typeof p === "string") {
+            return this.concat(ObjPath.parse(p));
+        } else if (p instanceof ObjPath) {
+            return this.concat(p.parts);
+        } else {
+            return new ObjPath(this.parts.concat(p));
+        }
     }
 
     static empty(): ObjPath {
