@@ -74,6 +74,27 @@ export default class ObjPath {
         }
     }
 
+    eq(p: AnyPath): boolean {
+        const other = ObjPath.of(p);
+        if (this.parts.length !== other.parts.length) {
+            return false;
+        }
+        for (let i = 0; i < this.parts.length; i++) {
+            if (this.parts[i] !== other.parts[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    toString(): string {
+        let s = "";
+        for (let part of this.parts) {
+            s += typeof part === "number" ? "[" + part + "]" : (s.length > 0 ? "." : "") + part;
+        }
+        return s;
+    }
+
     static empty(): ObjPath {
         return new ObjPath([]);
     }
@@ -85,8 +106,10 @@ export default class ObjPath {
             return new ObjPath(p);
         } else if (typeof p === "string") {
             return ObjPath.parse(p);
-        } else {
+        } else if (typeof p === "number") {
             return new ObjPath([p]);
+        } else {
+            return ObjPath.empty();
         }
     }
 

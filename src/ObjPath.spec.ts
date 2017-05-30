@@ -119,4 +119,6 @@ describe("ObjPath", () => {
         it("parts", () => expect(ObjPath.of([1,2,3]).parts).eql([1,2,3]));
     });
 
+    it("toString()", () => expect(ObjPath.of("a.b[164].c").toString()).eq("a.b[164].c"));
+
 });
