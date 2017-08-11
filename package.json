@@ -2,7 +2,7 @@
     "name": "objpath",
     "version": "1.0.0",
     "description": "get/set json values by paths",
-    "main": "./lib/ObjPath.js",
+    "main": "./lib/Path.js",
     "scripts": {
         "build": "eslint src && babel src -d lib",
         "test": "mocha --compilers js:babel-core/register src/**/*.spec.js"
