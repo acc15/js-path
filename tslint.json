@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier",
+        "tslint-no-unused-expression-chai"
+    ],
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+        ]
+    },
+    "rules": {
+        "no-console": false,
+        // generic arrays allows to extend interface from Array type
+        "array-type": [true, "generic"],
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "max-classes-per-file": false
+    }
+}
