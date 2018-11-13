@@ -148,26 +148,27 @@ export default class Path {
         return root;
     }
 
-    public set(root: any, val: any): void {
-        if (this.isEmpty()) {
-            return val;
+    public set(root: any, value: any): any {
+        if (this.length === 0) {
+            return value;
         }
 
-        const res = Path.makeElObject(this.elements[this.offset], root);
+        const result = Path.makeElObject(this.elements[this.offset], root);
+        const end = this.offset + this.length - 1;
 
-        let trg = res;
-        let src = root;
-        for (let i = this.offset; i < this.offset + this.length - 1; i++) {
-            const el = this.elements[i];
-            const nel = this.elements[i + 1];
-            const nsrc = src[el.item];
-            trg[el.item] = Path.makeElObject(nel, nsrc);
-            src = nsrc || src;
-            trg = trg[el.item];
+        let target = result;
+        let source = root;
+        for (let i = this.offset; i < end; i++) {
+            const element = this.elements[i];
+            const nextElement = this.elements[i + 1];
+            const nextSource = source[element.item];
+            target[element.item] = Path.makeElObject(nextElement, nextSource);
+            source = nextSource || source;
+            target = target[element.item];
         }
-        trg[this.elements[this.offset + this.length - 1].item] = val;
+        target[this.elements[end].item] = value;
 
-        return res;
+        return result;
     }
 
     public toString(): string {
