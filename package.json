@@ -1,5 +1,5 @@
 {
-    "name": "js-path",
+    "name": "quick-path",
     "version": "1.0.0",
     "description": "get/set json values by path",
     "main": "./dist/Path.js",
