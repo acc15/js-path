@@ -1,15 +1,15 @@
 {
-    "name": "quick-path",
+    "name": "quickpath",
     "version": "1.0.0",
     "description": "get/set json values by path",
-    "main": "./dist/Path.js",
-    "types": "./dist/Path.d.ts",
+    "main": "dist/Path.js",
+    "types": "dist/Path.d.ts",
     "scripts": {
         "build": "npm run lint && tsc",
         "lint": "tslint -p tsconfig.json",
         "test": "mocha -r ts-node/register 'src/**/*.spec.ts'"
     },
-    "repository": "github:acc15/js-path",
+    "repository": "github:acc15/quickpath",
     "keywords": [
         "path",
         "get",
@@ -18,9 +18,9 @@
     "author": "vm",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/acc15/js-path/issues"
+        "url": "https://github.com/acc15/quickpath/issues"
     },
-    "homepage": "https://github.com/acc15/js-path#readme",
+    "homepage": "https://github.com/acc15/quickpath#readme",
     "devDependencies": {
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.5",
