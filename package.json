@@ -1,7 +1,7 @@
 {
-    "name": "objpath",
+    "name": "js-path",
     "version": "1.0.0",
-    "description": "get/set json values by paths",
+    "description": "get/set json values by path",
     "main": "./dist/Path.js",
     "types": "./dist/Path.d.ts",
     "scripts": {
@@ -9,7 +9,7 @@
         "lint": "tslint -p tsconfig.json",
         "test": "mocha -r ts-node/register 'src/**/*.spec.ts'"
     },
-    "repository": "github:acc15/objpath",
+    "repository": "github:acc15/js-path",
     "keywords": [
         "path",
         "get",
@@ -18,9 +18,9 @@
     "author": "vm",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/acc15/objpath/issues"
+        "url": "https://github.com/acc15/js-path/issues"
     },
-    "homepage": "https://github.com/acc15/objpath#readme",
+    "homepage": "https://github.com/acc15/js-path#readme",
     "devDependencies": {
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.5",
