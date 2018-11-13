@@ -34,6 +34,13 @@ describe("Path", () => {
         });
     });
 
+    describe("at", () => {
+        it("must throw Error if index is out of bounds", () => {
+            const fn = () => Path.of("a.b.c").subPath(1, 1).at(1);
+            expect(fn).to.throw();
+        });
+    });
+
     describe("parse", () => {
         it("must correctly parse path", () => {
             expect(Path.of("this.is[3].object[4][5].path").toArray()).to.deep.eq([

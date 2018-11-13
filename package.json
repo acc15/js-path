@@ -7,6 +7,7 @@
     "scripts": {
         "build": "npm run lint && npm run test && tsc",
         "lint": "tslint -p tsconfig.json",
+        "doc": "typedoc --out docs",
         "test": "mocha -r ts-node/register 'src/**/*.spec.ts'"
     },
     "repository": "github:acc15/quickpath",
@@ -32,6 +33,7 @@
         "tslint-config-prettier": "^1.16.0",
         "tslint-loader": "^3.5.4",
         "tslint-no-unused-expression-chai": "^0.1.4",
+        "typedoc": "^0.13.0",
         "typescript": "^3.1.6"
     }
 }
