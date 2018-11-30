@@ -6,7 +6,6 @@
     "types": "dist/Path.d.ts",
     "scripts": {
         "build": "run-s clean lint test tsc",
-        "publish": "run-s build publish",
         "tsc": "tsc",
         "clean": "rimraf dist/",
         "lint": "tslint -p tsconfig.json",
