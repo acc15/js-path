@@ -1,11 +1,14 @@
 {
     "name": "quickpath",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "get/set json values by path",
     "main": "dist/Path.js",
     "types": "dist/Path.d.ts",
     "scripts": {
-        "build": "npm run lint && npm run test && tsc",
+        "build": "run-s clean lint test tsc",
+        "publish": "run-s build publish",
+        "tsc": "tsc",
+        "clean": "rimraf dist/",
         "lint": "tslint -p tsconfig.json",
         "doc": "typedoc --out docs",
         "test": "mocha -r ts-node/register 'src/**/*.spec.ts'"
@@ -28,6 +31,8 @@
         "chai": "^4.2.0",
         "eslint": "^3.19.0",
         "mocha": "^5.2.0",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^2.6.2",
         "ts-node": "^7.0.1",
         "tslint": "^5.11.0",
         "tslint-config-prettier": "^1.16.0",

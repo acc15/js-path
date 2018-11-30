@@ -16,7 +16,7 @@ export interface PathElement {
 /**
  * Union of types which can be treated as path or path element(s)
  */
-type AnyPath = undefined | null | string | number | PathElement | Path | AnyPathArray;
+export type AnyPath = undefined | null | string | number | PathElement | Path | AnyPathArray;
 
 /**
  * Helper interface to allow recursion in [[AnyPath]]
