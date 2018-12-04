@@ -243,10 +243,8 @@ export default class Path {
         for (let i = this.offset; i < end; i++) {
             const element = this.elements[i];
             const nextElement = this.elements[i + 1];
-            const nextSource = source[element.item];
-            target[element.item] = Path.makeElObject(nextElement, nextSource);
-            source = nextSource || source;
-            target = target[element.item];
+            source = source !== null && source !== undefined ? source[element.item] : source;
+            target = target[element.item] = Path.makeElObject(nextElement, source);
         }
         target[this.elements[end].item] = value;
 
