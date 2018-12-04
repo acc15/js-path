@@ -148,6 +148,21 @@ describe("Path", () => {
             expect(a[0].a).eq(1);
         });
 
+        it("must set value if source is undefined", () => {
+            const res = Path.of("a.b.c").set(undefined, 123);
+            expect(res).to.deep.eq({a:{b:{c:123}}});
+        });
+
+        it("must correctly create array if source is undefined", () => {
+            const res = Path.of("[0].a[0]").set(undefined, 123);
+            expect(res).to.deep.eq([{a:[123]}]);
+        });
+
+        it("must correctly set value if parent object has same fields", () => {
+            const res = Path.of("a.b.c.l").set({a: undefined, c: {d: "hello"}}, 123);
+            expect(res).to.deep.eq({a:{b:{c:{l:123}}}, c:{d:"hello"}});
+        });
+
     });
 
     describe("first,last,subPath", () => {
