@@ -1,9 +1,13 @@
 {
     "name": "quickpath",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "get/set json values by path",
-    "main": "dist/Path.js",
-    "types": "dist/Path.d.ts",
+    "main": "./dist/Path.js",
+    "types": "./dist/Path.d.ts",
+    "files": [
+        "/dist",
+        "/src"
+    ],
     "scripts": {
         "build": "run-s clean lint test tsc",
         "tsc": "tsc",
